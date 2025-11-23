@@ -1,34 +1,60 @@
-/* Reset básico */
+/* =========================
+   RESET BÁSICO
+========================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Variáveis de cor (ajuste se quiser) */
+/* =========================
+   VARIÁVEIS DE COR
+========================= */
 :root {
-    --azul-fundo: #05386B;
-    --azul-escuro: #03254a;
-    --azul-botao: #0F6CD5;
-    --cinza-borda: #d9e0ea;
-    --cinza-placeholder: #a9b4c3;
-    --branco: #ffffff;
-    --sombra-card: 0 8px 25px rgba(0, 0, 0, 0.3);
+    --azul-fundo:   #e6f4ff;  /* fundo clarinho */
+    --azul-faixa:   #bfe3ff;  /* faixa no topo   */
+    --azul-botao:   #0F6CD5;
+    --branco:       #ffffff;
+    --cinza-borda:  #d9e0ea;
+    --cinza-texto:  #475569;
+    --cinza-ph:     #a9b4c3;
+    --sombra-card:  0 10px 26px rgba(0, 0, 0, 0.18);
 }
 
+/* =========================
+   FUNDO / FAIXA SUPERIOR
+========================= */
 body {
     font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-    background: linear-gradient(180deg, #07427b, #031c3c);
     min-height: 100vh;
+    background-color: var(--azul-fundo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Tela inteira */
+/* faixinha azul no topo da tela */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 26px;               /* ajusta a altura se quiser */
+    background-color: var(--azul-faixa);
+    z-index: -1;
+}
+
+/* =========================
+   CONTEÚDO CENTRAL
+========================= */
 #tela-cadastro {
     min-height: 100vh;
+    width: 100%;
     display: flex;
-    align-items: center;        /* centraliza vertical */
-    justify-content: center;    /* centraliza horizontal */
+    align-items: center;
+    justify-content: center;
     padding: 24px 16px;
 }
 
@@ -38,58 +64,50 @@ body {
     align-items: center;
 }
 
-
-/* Card principal */
-#card-cadastro {
-    background-color: var(--branco);
-    width: 100%;
-    max-width: 360px;
-    border-radius: 24px;
-    box-shadow: var(--sombra-card);
-    padding: 32px 26px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Topo: ícone + título */
+/* =========================
+   TOPO (ÍCONE + TÍTULO)
+========================= */
 .topo-cadastro {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    margin-bottom: 18px;   /* espaço entre o título e o card branco */
+    margin-bottom: 18px; /* espaço até o card branco */
 }
 
-.icone-motorista {
+.icone-motorista,
+.icone-aluno {
     width: 110px;
     height: auto;
 }
 
+/* texto "Cadastro Aluno" */
 .topo-cadastro h1 {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: 500;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+    color: #1f2933;
 }
 
-
+/* =========================
+   CARD BRANCO
+========================= */
 #card-cadastro {
-    background-color: #ffffff;
+    background-color: var(--branco);
     width: 100%;
     max-width: 360px;
     border-radius: 26px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    box-shadow: var(--sombra-card);
     padding: 26px 26px 24px;
 }
 
-/* IMPORTANTE: remova isso se ainda existir */
+/* garante que não tenha pseudo-elemento de fundo aqui */
 #card-cadastro::before {
     content: none;
 }
 
-
-/* Formulário */
+/* =========================
+   FORMULÁRIO
+========================= */
 #form-cadastro {
     width: 100%;
     display: flex;
@@ -97,7 +115,7 @@ body {
     gap: 10px;
 }
 
-/* Campo com ícone */
+/* campo com ícone */
 .campo {
     display: flex;
     align-items: center;
@@ -110,10 +128,10 @@ body {
 
 .campo span.material-symbols-outlined {
     font-size: 20px;
-    color: var(--cinza-placeholder);
+    color: var(--cinza-ph);
 }
 
-/* Input */
+/* input */
 .campo input {
     flex: 1;
     border: none;
@@ -125,10 +143,10 @@ body {
 }
 
 .campo input::placeholder {
-    color: var(--cinza-placeholder);
+    color: var(--cinza-ph);
 }
 
-/* Campo de senha com botão de mostrar */
+/* senha com botão de mostrar */
 .campo-senha {
     position: relative;
     padding-right: 6px;
@@ -146,10 +164,10 @@ body {
 
 .toggle-senha span {
     font-size: 20px;
-    color: var(--cinza-placeholder);
+    color: var(--cinza-ph);
 }
 
-/* Checkbox "Lembrar-me" */
+/* lembrar-me */
 .linha-opcoes {
     display: flex;
     align-items: center;
@@ -163,7 +181,7 @@ body {
     align-items: center;
     gap: 6px;
     font-size: 0.85rem;
-    color: #475569;
+    color: var(--cinza-texto);
 }
 
 .checkbox-container input {
@@ -171,7 +189,7 @@ body {
     height: 16px;
 }
 
-/* Botão principal */
+/* botão cadastrar */
 .btn-cadastrar {
     margin-top: 6px;
     border: none;
@@ -194,7 +212,7 @@ body {
     transform: translateY(1px);
 }
 
-/* Responsivo simples */
+/* responsivo simples */
 @media (min-width: 480px) {
     #card-cadastro {
         max-width: 380px;
